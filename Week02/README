@@ -1,0 +1,11 @@
+## Installation:
+jupyter
+pandas
+numpy
+scipy
+sklearn
+statsmodels
+(conda install pkgname)
+
+## Usage:
+Run the jupyter file "week02.ipynb"
