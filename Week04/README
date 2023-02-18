@@ -1,0 +1,8 @@
+installations:
+pandas
+numpy
+sklearn
+scipy
+
+The code are in the Week04.ipynb, which is a jupyterNotebook file.
+The results are in the fintech545_week4.pdf
