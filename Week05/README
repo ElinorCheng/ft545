@@ -1,0 +1,10 @@
+installations:
+pandas
+numpy
+sklearn
+scipy
+stat
+
+The code are in the Week05.ipynb, which is a jupyterNotebook file.
+The results are in the fintech545_week5.pdf
+Library functions are in the 'Library' folder.
