@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from Library.variance import spear_cor
-
+from scipy.stats import t,norm
 def chol_psd(mat):
     # cholesky for psd
     L = np.zeros(mat.shape)
