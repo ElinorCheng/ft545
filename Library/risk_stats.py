@@ -4,7 +4,7 @@ from scipy.stats import norm, t
 from statsmodels.tsa.arima.model import ARIMA
 
 
-from Library.variance import ew_cov, cum_var
+from Library.variance import ew_cov, ew_var
 
 def return_calculate(df, method="DISCRETE", dateColumn="Date"):
     """

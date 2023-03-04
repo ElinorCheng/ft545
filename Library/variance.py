@@ -1,5 +1,5 @@
 import numpy as np
-
+from scipy.stats import spearmanr
 
 # calculate the weight terms
 def cum_weight(n, lambda_):
@@ -50,6 +50,19 @@ def ew_cov(df, lambda_):
             cov = ew_var(df[i], df[j], lambda_=lambda_)
             cov_m[i, j] = cov
     return cov_m
+
+
+def spear_cor(df):
+    n = df.shape[0]
+    cor_spear = np.zeros((n, n))
+    for i in range(0, n):
+        for j in range(0, n):
+           res= spearmanr(df[i], df[j])
+           cor_spear[i, j] = res.correlation
+    return cor_spear
+
+
+
 
 
 def get_cor(cov, var):

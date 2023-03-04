@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from Library.variance import spear_cor
 
 def chol_psd(mat):
     # cholesky for psd
@@ -142,3 +142,26 @@ def multi_norm_sim(mat,mu=0, nsim=25000):
     r = np.random.normal(0, 1, size=(len(mat), nsim))
 
     return L @ r + mu
+
+def copula_sim(df, method="T", simN=500):
+    df = np.transpose(df)
+    Z = []
+    n = len(df)
+    simX = []
+    params = []
+    if method.upper() =='T':
+
+        for r in df:
+            df, mu_t, sigma_t = t.fit(r, method='mle')
+            u = t.cdf(r, df, mu_t,sigma_t)
+            params.append([df, mu_t, sigma_t])
+            Z.append(norm.ppf(u))
+        Z = np.array(Z)
+        cor = spear_cor(Z)
+        sim = np.random.multivariate_normal(mean= np.zeros(n), cov=cor,size=simN)
+        sim = sim.T
+        for i in range(0,n):
+            u = norm.cdf(sim[i])
+            param = params[i]
+            x = t.ppf(u,df=param[0],loc=param[1],scale=param[2])
+            simX.append(x)
